@@ -1,0 +1,757 @@
+URL : https://noventiq.darwinbox.com/​
+User ID :UI1488​
+Password: yReWadyg​
+
+
+https://aws.amazon.com/systems-manager/pricing/
+creadentails path
+https://umberalla-my.sharepoint.com/personal/kms_umbrellainfocare_com/_layouts/15/onedrive.aspx?csf=1&web=1&e=odVRoQ&OR=Teams%2DHL&CT=1701073104355&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzIzMDkyOTExMjA4IiwiSGFzRmVkZXJhdGVkVXNlciI6ZmFsc2V9&cid=d6b32a93%2Dc3be%2D4064%2Da020%2Dcc562862250f&id=%2Fpersonal%2Fkms%5Fumbrellainfocare%5Fcom%2FDocuments%2FUmbrella%20AWS%20Managed%20Services%2FMSP%20Customers%2D%20Credentials%2FServer%20Keys&FolderCTID=0x01200094698654A97BE74DA23905BD4D031D75&view=0
+
+https://git.io/vpn -o openvpn.sh
+
+"AWS": "arn:aws:iam::182693320465:role/AWS-SystemsManager-AutomationAdministrationRole-org"
+
+
+182693320465
+ou-jteu-cro9e3np
+
+
+top -hv|-bcEHiOSs1 -d secs -n max -u|U user -p pid -o fld -w [cols]
+
+##############################################
+Shell script not running via crontab, but runs fine manually
+
+
+finally i found a solution ... instead of entering the cronjob with
+
+crontab -e
+i needed to edit the crontab file directly
+
+nano /etc/crontab
+adding e.g. something like
+
+*/5 *     * * *   root  /bin/bash /var/scripts/vpn-check.sh
+
+
+arn:aws:iam::880845883791:role/AWS-SystemsManager-AutomationExecutionRole
+
+
+
+
+
+
+######################openvpn#################
+  openvpn-addclient  uipl-vinod vinodk@umbrellainfocare.com
+
+net localgroup "Remote Desktop Users"
+uipladmin1
+India@2023
+
+10.200.239.140
+AWS git repo
+
+excel.exe/safe
+
+
+https://github.com/orgs/aws-samples/repositories
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/upgrading_from_rhel_7_to_rhel_8/index
+
+step#############################################################################################
+If you are upgrading using Red Hat Update Infrastructure (RHUI) on a public cloud, enable required RHUI repositories and install required RHUI packages to ensure your system is ready for upgrade.
+
+For AWS:
+
+# yum-config-manager --enable rhui-client-config-server-7
+# yum-config-manager --enable rhel-7-server-rhui-extras-rpms
+# yum -y install rh-amazon-rhui-client leapp-rhui-aws
+
+For Microsoft Azure:
+
+# yum-config-manager --enable rhui-microsoft-azure-rhel7
+# yum -y install rhui-azure-rhel7
+# yum-config-manager --enable rhui-rhel-7-server-rhui-extras-rpms
+# yum -y install leapp-rhui-azure
+
+Update all packages to the latest RHEL 7 version:
+# yum update
+
+Reboot the system:
+# reboot
+
+Install the Leapp utility:
+# yum install leapp-upgrade
+
+#comment Below given pam_pkcs11.so module becasue RHEL 8 does not support it
+
+#vi /etc/pam.d/smartcard-auth-ac
+
+#auth        [success=done ignore=ignore default=die] pam_pkcs11.so nodebug wait_for_card
+#password    required      pam_pkcs11.so
+
+#vi /etc/ssh/sshd_config
+
+Uncomment
+PermitRootLogin yes
+
+Run Pre upgrade if success than run upgrade
+#leapp preupgrade --no-rhsm
+
+#leapp preupgrade --target <target_os_version>
+
+#leapp preupgrade --target 8.6
+
+After success preupgrade Than run upgrade
+#leapp upgrade --no-rhsm
+
+#leapp upgrade --target <target_os_version>
+ 
+Step 2 – Change Host Name of Master Server
+hostnamectl set-hostname rajesh.master.com
+Step 3 – Stop and Disable Firewall
+systemctl stop firewalld
+systemctl disable firewalld
+Step 4 – Disable swap
+sudo swapoff -a
+ sudo sed -i '/ swap / s/^/#/' /etc/fstab
+ # Reboot a machine after that.
+ shutdown -r now
+ Step 5 – Install and Start Docker Community Editon in Master Server
+ sudo -s
+ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+ Command 2 - Use the following command to set up the stable repository
+ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+ Command 3 - Install the latest version of Docker CE
+ sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+ sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+ sudo yum install -y docker-ce
+ sudo yum install docker-ce
+ Command 4 - Enable Docker
+ sudo systemctl enable docker
+ Command 5 - Start Docker and Verify Docker Installations
+ $ sudo systemctl start docker
+$ docker -v
+$ docker info
+Step 6 – Setup yum repo for kubelet kubeadm kubectl
+----------ONE COMMAND----------------
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
+EOF
+--------------------------
+Step 7 – Set SELinux in permissive mode (effectively disabling it)
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+Step 8 – Install kubelet kubeadm kubectl and enable kubelet
+$ yum install -y kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64 --disableexcludes=kubernetes
+$ systemctl enable --now kubelet
+
+# Latest 
+$ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+# Kubernetes 1.23 
+$ yum install -y kubelet-1.23.0-0.x86_64 kubeadm-1.23.0-0.x86_64 kubectl-1.23.0-0.x86_64 --disableexcludes=kubernetes
+# Kubernetes 1.22
+$ yum install -y kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64 --disableexcludes=kubernetes
+# Kubernetes 1.21
+$ yum install -y kubelet-1.21.0-0.x86_64 kubeadm-1.21.0-0.x86_64 kubectl-1.21.0-0.x86_64 --disableexcludes=kubernetes
+# Kubernetes 1.20
+$ yum install -y kubelet-1.20.0-0.x86_64 kubeadm-1.20.0-0.x86_64 kubectl-1.20.0-0.x86_64 --disableexcludes=kubernetes
+Step 9 – Finally, initialize a kubernetes clusters
+$ kubeadm init --ignore-preflight-errors all
+
+# How to install older version of Kubernetes
+# kubeadm init --kubernetes-version=v1.9.2  
+Step 11 – Setup Workstation in the Master https://www.linkedin.com/learning/learning-linux-command-line-14447912/learning-linux-command-line?u=22132331node only. You can be regular user for it
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+Step 12 – Verify Clustors
+$ kubectl get nodes
+$ kubectl get pods --all-namespaces
+
+#############Step 13 – Install Kubernetes pod networking##############
+Weave Net provides networking and network policy, will carry on working on both sides of a network partition, and does not require an external database. Kubernetes versions 1.6 and above:
+$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+$ kubectl get nodes
+$ kubectl get pods --all-namespaces
+$ kubectl get nodes
+kubectl exec -it [pod_name] [name_space]
+kubectl attach [pod_name] [name_space]
+
+
+SFTP configuration-
+https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/	
+
+aws git-hub:-
+https://github.com/aws/Trusted-Advisor-Tools/tree/master/ExposedAccessKeys
+https://github.com/aws-samples/aws-workshop-for-kubernetes
+https://github.com/aws-samples/aws-trusted-advisor-scheduled-refresh/blob/main/README.md
+
+%%%%%%%%%%%%%%%%%%%%%
+VS code 
+install vs code in ubuntu
+install prettier code plugin for code formating automatically
+
+
+Linux command link---------------
+https://www.golinuxcloud.com/stress-command-in-linux/
+
+######################################################################################3
+laodbalancer configuration for wordpress:
+
+file_name:=- wp-config.php
+
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
+
+check the metadata
+curl http://169.254.169.254/latest/dynamic/instance-identity/document 2>/dev/null | grep billingProducts
+
+
+
+eks autoscaling ######################################
+https://katharharshal1.medium.com/kubernetes-cluster-autoscaling-ca-using-aws-eks-4aab8c89f9a1
+https://www.kubecost.com/kubernetes-autoscaling/kubernetes-cluster-autoscaler/
+
+
+s3 mounting on linux
+
+step=1 create the IAM user
+step=2 s3 policy for iam user
+step=3 https://github.com/s3fs-fuse/s3fs-fuse/wiki/Fuse-Over-Amazon#prefix-default-coming-soon
+
+vim .passwd-s3fs
+chmod 600 .passwd-s3fs
+
+sudo s3fs bucketname:/s3_folder_name /linux_server_folder_name  -o passwd_file=$HOME/.passwd-s3fs,nonempty,rw,allow_other,mp_umask=002,uid=$UID,gid=$UID -o url=http://s3.aws-region.amazonaws.com
+,endpoint=aws-region1,use_path_request_style
+
+
+s3fs bucketname:/s3_folder_name /linux_server_folder_name  -o passwd_file=/root/.passwd-s3fs,nonempty,rw,allow_other,mp_umask=002,uid=1000,gid=1000 -o url=https://s3.ap-south-1.amazonaws.com,endpoint=ap-south-1,use_path_request_style
+
+#mount|grep s3fs
+#df -h
+
+ 
+
+Goto /etc/fstab mount permanently
+
+bucketname directoryonfs fuse.s3fs _netdev,allow_other 0 0
+
+ 
+
+# Vim /etc/fstab
+s3-bucket /mnt/s3 fuse.s3fs _netdev,allow_other 0 0
+
+
+
+
+https://www.linkedin.com/learning/learning-linux-command-line-14447912/learning-linux-command-line?u=22132331
+https://jaehoo.wordpress.com/2023/01/16/aws-reset-the-windows-administrator-password-on-ec2-instance/
+
+
+#########################################################.htaccess######################################################################
+########################################################
+
+where is .htaccess file store?
+.htaccess file always store in rootdocument directory and this is not created bydefault we have to create the .htaccess file to redirect the url or any path
+
+
+.htaccess location...........
+/var/www/html/
+
+run below cammand to check the .htaccess file.........
+
+ls -a
+
+
+
+how to redirect any default folder name with our own folder name........................
+Redirect 301 /wordpress /my-foldername
+
+
+how to redirect index.html to index.php..............................
+Redirect 301 /index.html /index.php
+
+how to redirect any url.............................
+Redirect 301 / https://news.google.com
+
+how to redirect /wordpress in url with /blog.........................
+RedirectMatch 301 ^/word /blog
+
+how to redirect any wordpress artical with date....................
+NC=not case senstive
+L=last rule
+##############/wordpress/2023/10/01/aritical-name redirect with MM/DD/YY/aritcal-name
+RewriteRule ^/wordpress/(.*)/(.*)/(.*)$ /blog/$2/$1/$3  [R=301,NC,L]
+
+
+
+how to redirect www.domain name####################################################
+RewriteEngine On
+RewriteCond  %{HTTP_HOST} ^domain_name
+RewiteRule   (.*) https://www.domain_name/$1 [R=301.L]
+
+
+
+
+########################################################SSL in apach2 ###################################################################
+
+
+we need to check ssl module is install or not
+
+cd /etc/ssl
+ls /etc/ssl
+certs  openssl.cnf  private
+cd certs
+/etc/ssl/certs ##################################################
+here is all certificate authoritory 
+cd /etc/ssl/private####################################
+we can create your private file in private folder
+first_command:-  openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out my_domain.key
+
+##########################how to create the CSR ##############################################################
+second command:- openssl req -new -key my_domain.key -out my_domain.csr
+Country Name (2 letter code) [AU] IN
+State or Province Name (full name) [Some-State] Delhi
+Locality Name (eg, city) []New Delhi
+Organization Name (eg, company) [Internet Widgits Pty Ltd] my_company_name
+Organizational Unit Name (eg, section) []: Cloud
+Common Name (e.g. server FQDN or YOUR name) [] linuxengg.com
+Email Address [] your email address
+
+
+
+###################how to genrate certificate###############################################################
+Command...............
+openssl x509 -req -days 365 -in file_name.csr -signkey private_file_name.key -out my_certificate_name.crt
+
+how to update the TLS 
+
+make change in virtual hosting file
+
+SSL protocal -all +TLSv1.2 +TLSv1.3
+
+
+openssl s_client -connect localhost:443 -tls_1
+
+
+
+
+
+###################################squid proxy server######################################################################
+
+apt install squid
+
+systemctl enabled --now squid
+systemctl status squid
+default port 3128
+/etc/squid
+####################create a conf file in squid folder#####################
+below conf will change the squid default port 3182 to 8080
+vi my_file.conf
+http_port 8080
+cache_dir ufs /var/spool/squid  100 16 256
+100...........this size 
+16......how many defult forlder
+256.........
+systemctl restart squid
+
+journalctl -xe -u squid
+
+ufw allow 8080 comment "this is squid proxy server port"
+
+
+###########authentication in squid #########################
+
+directroy
+
+/usr/lib/squid
+
+change the below mention file to authentication ##############
+vi /etc/squid/my-file.conf
+
+add below file in .conf file
+auth_param basic program /usr/lib/squid/basic/ncsa_auth /etc/squid/htpasswd
+auth_param basic realm proxy 
+
+
+################## how to create acl in squid conf file#########################
+acl internal src ip_address/24
+acl streaming dst domain www.youtube.com ######### block the youtube 
+acl workday MTWHF 08:00-17:00   ##############time to block the accesss
+acl authenticated proxy_auth REQUIRED
+
+http_access deny streaming workday
+http_access allow internal
+http_access deny all
+http_access all intenal authentication
+
+
+#########################################################################################################################################
+how to create the user and password file in linux
+
+htpasswd -C /etc/squid/htpasswd username #############  -C user to create the new file and when you add more user remove the -C from the command
+enter the password
+retype password
+
+#####now you can check the file htpasswd 
+cat /etc/squid/htpasswd
+ 
+
+
+##############how to check authentication is working or not ########################
+/usr/lib/squid/basic_ncsa_auth /etc/squid/htpasswd ########### press enter and user and password 
+if you get ok it is working
+
+
+
+###########################################SAMBA#################################################3
+required package to connect with SAMBA
+apt install cifs-utils
+
+
+now we need to create a mount point#############################
+make a dir 
+mkdir /mnt/crop
+mount -t cifs -o user=user_name,password=password1234,noperm //host_name_ip/corp /mnt/crop
+
+
+create a credentail fil in user home folder
+cd /home/user_name/
+touch ./credentails_file
+vi .credenatails_file
+user=user_name
+password=password123
+
+now this save the file ########################
+
+go to fstab
+
+id command use to check the uid and gid
+
+fstab################
+//host_ip/corp /mnt/corp cifs credentails=/home/user_name/.credentail_file_name,uid=1001,gid=1001,noperm, 0 0  
+
+
+#############################ldap##########################################################
+
+SSSD
+system security service daemon
+windbindd
+
+
+config.yaml
+network:
+  ethernets:
+    enp0s5
+     hdcp4: no
+     addresses: [my-ip]
+     gateway4: [my-gatway-ip]
+     namesservers:;
+       addresses: [my-ip] window-active-domain controler-ip
+       enp0o6:
+         dhcp4: ture
+         optional: ture
+      version: 2
+          
+        
+vi /etc/hosts
+
+[my-ip] window-active-domain controler-ip    windc01.domain_name
+
+
+##################install SSSD package in linux ########################
+apt install sssd-ad sssd-tools realmd adcli
+
+
+command to check the AD###############
+realm -v discover domain_name
+
+after run the above command you will find the domain name and if you do not find any domain name that means there is DNS issue
+
+
+apt install sssd sssd-tool libnss-sss libpam-sss adcli samba-common-bin
+
+
+realm join -U administorter@domain_name  realm_name
+
+vi /etc/samba/smb.conf
+add below line in smd.conf
+security = ADS
+username map = /etc/samba/username.map
+
+#############now saves 
+
+vi /etc/samba/username.map
+user_name "user_first_name user_last_name"
+
+
+apt install smbclient
+smbclient -L localhost
+
+
+##############################NFS 
+apt install NFS-common
+systemctl enable --now rpcbind
+
+
+
+############################iptable##########################################################################################
+iptables-save
+#####################check the IP tablle packages######################
+root@uiplvinod-Latitude-3420:~# apt list iptables*
+Listing... Done
+iptables-netflow-dkms/focal-updates 2.4-2ubuntu0.5 amd64
+iptables-persistent/focal-updates,focal-updates 1.0.14ubuntu1 all
+iptables/focal-updates,now 1.8.4-3ubuntu2.1 amd64 [installed,automatic]
+iptables/focal-updates 1.8.4-3ubuntu2.1 i386
+
+###############################################
+apt isntall iptables-persistent
+
+
+###########################Linux kernal conf file##########################
+open the below mention kernal file which [sysctl.com] and uncomment below mention line in the sysctl.conf file
+vi /etc/sysctl.conf
+
+net.ipv4.ip_forward=1 ################ in this line may be 0 or 1 
+
+0 means deny ..........if you want to allow the traffic keep 1
+1 means allow...........if you want to deny the traffic keep 0
+
+
+sudo sysctl -p 
+or restart the server to make change effetive.
+
+cd /etc/iptables
+ls
+rules.v4 rules.v6
+vi rules.v4
+we can remove all line and just keep only three below line
+:INPUT ACCEPT [330:35519]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [231:30846]
+
+
+save the file
+
+######################################adding rules in iptables###############################################
+sudo iptables -t nat -A POSTROUTING -j MASQUERDE 
+sudo iptables -t nat -s 10.0.0.0/24 -A POSTROUTING -j MASQUERDE 
+
+sudo iptables-save | sudo tee /etc/iptables
+
+############################how to configure port forwarding in iptables######################################
+we configure here NAT source and destination we have expose a private server in public internet
+step 1 connection tracking , when a ip packet comes through on a router
+step 2 source nat
+step 3 destination nat
+
+
+command:- below command use to setup the connection
+iptables -A FORWARD -i <my_public_ethernet_card_name> -o <my_internal_ethernet_card_name> -p tcp --syn --dport 3306 -m conntrack --ctstate NEW -j ACCEPT
+
+Command:- this command use to track the connection packet
+iptables -A FORWARD -i <my_public_ethernet_card_name> -o <my_internal_ethernet_card_name> -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+
+command:- 
+iptable -t nat -A PREROUTING -i <my_public_ethernet_card_name(enp01)> -p tcp --dport 3306 -j DNAT --to-destination <private_ip>
+
+command:- router configuration commad
+iptable -t nat -A POSTROUTING -o <ROUTER_ENI_PORT(enp02)> -p tcp --dport 3306 -j SNAT --to-source <router_ip>
+
+
+iptables-save | tee /etc/iptables/rules.v4
+
+
+Command:- how to configure allow ssh only some ip
+iptables -A INPUT -p tcp --dport ssh -j DROP   ############ this command use to drop all traffic
+iptables -A INPUT -p tcp --dprot ssh -s <my_ip> -m state --state NEW, ESTABLISHED -j ACCEPT   #########this command use to all ssh 
+
+iptables-save | tee /etc/iptables/rules.v4
+
+
+iptables -A OUTPUT -p tcp -d <my_ip> -sport 22 -m state --state NEW,ESTABLISHED 
+
+
+iptables -vnL --line
+watch 0.5 iptables -vnL --line
+
+iptables -A INPUT -p tcp --dport ssh -j LOG
+
+iptables-save
+
+
+
+
+#####################################################VSFTPD Server########################################
+very secure file trasfer protocal daemon[VSFTPD]
+apt install vsftpd
+systemctl start vsftpd
+systemctl enable vsftpd
+
+sftp port 22
+ftp port 21
+vsftpd port we can assing the port which u want
+
+
+VSFTPD conf file
+/etc/vsftpd.conf
+vi /etc/vsftpd.conf  #############you can change or modif the file
+
+pasv_enable=YES
+pasv_mix=10000
+pasv_max=2000
+
+
+
+#######################################SSH secure#########################
+
+how we can block to access my server
+
+we can block the ssh connection 
+
+cd /etc/sshd/sshd.conf.d/
+
+we should make a new file to access or block the ssh 
+
+/etc/host.allow  #########allow file use to allow the who to access the server
+/etc/host.deny   #########this is deny to ssh
+
+
+
+65.1.206.92
+
+
+
+
+
+
+
+
+#############################ssh#########################3
+how to create a ssh seprate key for all user in linux
+
+step 1) ssh-keygen  ##########create a user private and public key (don't user sudo to create a key)
+step 2) ssh-copy-id user_name@server_ip   ############# add your public key to the server 
+
+
+how to create a ssh server key##################
+
+ssh-keygen -q -N "" -t rsa -b 4096 -f /etc/ssh/ssh_host_rsa_key
+
+
+
+################################fail2ban###########################################################################
+
+apt install fail2ban
+systemctl enable fail2ban
+
+cd /etc/fail2ban
+
+jail.conf #######this is default conf file
+
+
+
+
+
+
+
+##########################netstat and nmap, ss#############################
+
+netstat . this is network statstic
+ss.. socket statstic
+
+ss -tap
+
+
+nmap,, network mapper
+
+
+
+#########################how to change envirment variable################3
+cd /etc/bashrc
+vi.bashrc
+
+PATH=$PATH: -dir_name 0r file_name
+
+export PATH
+
+
+source ~./bashrc
+
+
+
+################shel####################
+
+##############how to reset root password####################
+reboot the linux 
+
+
+go in the kernel file and find the vmlinuz and it is kernel information 
+
+add below line in kernel file
+
+rd.break 
+now save the file and reboot the server and after reboot the server it will reboot with root read only password
+
+mount -o remount.rw /sysroot
+ls
+pwd
+/  ############you will be here 
+
+chroot /sysroot
+ 
+ passwd ###enter
+ password@123
+ password@123
+ 
+ exit
+ exit
+ reboot
+ 
+ 
+ 
+ ec2:instance
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
