@@ -1,19 +1,7 @@
-URL : https://noventiq.darwinbox.com/​
-User ID :UI1488​
-Password: yReWadyg​
 
 
-https://aws.amazon.com/systems-manager/pricing/
-creadentails path
-https://umberalla-my.sharepoint.com/personal/kms_umbrellainfocare_com/_layouts/15/onedrive.aspx?csf=1&web=1&e=odVRoQ&OR=Teams%2DHL&CT=1701073104355&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzIzMDkyOTExMjA4IiwiSGFzRmVkZXJhdGVkVXNlciI6ZmFsc2V9&cid=d6b32a93%2Dc3be%2D4064%2Da020%2Dcc562862250f&id=%2Fpersonal%2Fkms%5Fumbrellainfocare%5Fcom%2FDocuments%2FUmbrella%20AWS%20Managed%20Services%2FMSP%20Customers%2D%20Credentials%2FServer%20Keys&FolderCTID=0x01200094698654A97BE74DA23905BD4D031D75&view=0
-
-https://git.io/vpn -o openvpn.sh
-
-"AWS": "arn:aws:iam::182693320465:role/AWS-SystemsManager-AutomationAdministrationRole-org"
 
 
-182693320465
-ou-jteu-cro9e3np
 
 
 top -hv|-bcEHiOSs1 -d secs -n max -u|U user -p pid -o fld -w [cols]
@@ -33,7 +21,7 @@ adding e.g. something like
 */5 *     * * *   root  /bin/bash /var/scripts/vpn-check.sh
 
 
-arn:aws:iam::880845883791:role/AWS-SystemsManager-AutomationExecutionRole
+
 
 
 
@@ -84,28 +72,10 @@ Install the Leapp utility:
 
 #comment Below given pam_pkcs11.so module becasue RHEL 8 does not support it
 
-#vi /etc/pam.d/smartcard-auth-ac
-
-#auth        [success=done ignore=ignore default=die] pam_pkcs11.so nodebug wait_for_card
-#password    required      pam_pkcs11.so
 
 #vi /etc/ssh/sshd_config
 
-Uncomment
-PermitRootLogin yes
 
-Run Pre upgrade if success than run upgrade
-#leapp preupgrade --no-rhsm
-
-#leapp preupgrade --target <target_os_version>
-
-#leapp preupgrade --target 8.6
-
-After success preupgrade Than run upgrade
-#leapp upgrade --no-rhsm
-
-#leapp upgrade --target <target_os_version>
- 
 Step 2 – Change Host Name of Master Server
 hostnamectl set-hostname rajesh.master.com
 Step 3 – Stop and Disable Firewall
