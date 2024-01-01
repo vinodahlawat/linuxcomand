@@ -3,7 +3,7 @@
 			"Effect": "Deny",
 			"Principal": "*",
 			"Action": "s3:*",
-			"Resource": "arn:aws:s3:::document-management-system-qa/*",
+			"Resource": "<resource-arm>/*",
 			"Condition": {
 				"Bool": {
 					"aws:SecureTransport": "false"
@@ -27,8 +27,8 @@
             "Principal": "*",
             "Action": "s3:*",
             "Resource": [
-                "arn:aws:s3:::document-management-system-qa",
-                "arn:aws:s3:::document-management-system-qa/*"
+                "<resource-arn",
+                "<resource-arn/*"
             ],
             "Condition": {
                 "Bool": {
