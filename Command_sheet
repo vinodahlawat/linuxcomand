@@ -600,7 +600,7 @@ we should make a new file to access or block the ssh
 
 
 
-65.1.206.92
+
 
 
 
@@ -681,10 +681,7 @@ pwd
 /  ############you will be here 
 
 chroot /sysroot
- 
- passwd ###enter
- password@123
- password@123
+
  
  exit
  exit
